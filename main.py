@@ -7,7 +7,7 @@ from PySide6.QtQml import QQmlApplicationEngine
 if __name__ == "__main__":
     app = QGuiApplication(sys.argv)
     engine = QQmlApplicationEngine()
-    engine.load(os.path.join(os.path.dirname(__file__), "login_ui.qml"))
+    engine.load(os.path.join(os.path.dirname(__file__), "ui/views/login_ui.qml"))
 
     if not engine.rootObjects():
         sys.exit(-1)
