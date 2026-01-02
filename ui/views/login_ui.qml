@@ -16,6 +16,8 @@ Window {
     Material.theme: Material.System
     Material.accent: Material.Indigo
 
+
+    
     Rectangle {
         id: topbar
         height: 70
@@ -102,6 +104,8 @@ Window {
         anchors.top: input_container.bottom
         anchors.topMargin: 40
         anchors.horizontalCenter: parent.horizontalCenter
+
+        onClicked: loginViewModel.login(username_input.text, password_input.text)
     }
 
 }
