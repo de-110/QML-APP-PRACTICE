@@ -106,7 +106,7 @@ Window {
         anchors.horizontalCenter: parent.horizontalCenter
 
         onClicked: {
-            loginViewModel.login(username_input.text, password_input.text)
+            login_window.loginViewModel.login(username_input.text, password_input.text)
         }
     }
 
