@@ -16,7 +16,7 @@ Window {
     Material.theme: Material.System
     Material.accent: Material.Indigo
 
-
+    property var loginViewModel
     
     Rectangle {
         id: topbar
@@ -105,7 +105,9 @@ Window {
         anchors.topMargin: 40
         anchors.horizontalCenter: parent.horizontalCenter
 
-        onClicked: loginViewModel.login(username_input.text, password_input.text)
+        onClicked: {
+            loginViewModel.login(username_input.text, password_input.text)
+        }
     }
 
 }

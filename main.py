@@ -9,11 +9,12 @@ from ui.viewModels.loginViewModel import LoginViewModel
 if __name__ == "__main__":
     app = QGuiApplication(sys.argv)
     engine = QQmlApplicationEngine()
+    
+    login_vm = LoginViewModel()
+    engine.setInitialProperties({"loginViewModel": login_vm})
     engine.load(os.path.join(os.path.dirname(__file__), "ui/views/login_ui.qml"))
 
-    login_vm = LoginViewModel()
 
-    engine.rootContext().setContextProperty("loginViewModel", login_vm)
 
     if not engine.rootObjects():
         sys.exit(-1)
