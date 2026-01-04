@@ -17,7 +17,7 @@ Window {
     Material.accent: Material.Indigo
 
     property color alertColor: ems_connect.loginViewModel.loginStatus ? "black" : "red"
-    property string alertText: ems_connect.loginViewModel.loginStatus ? "" : "Wrong Credentials"
+    property string alertText: ems_connect.loginViewModel.loginStatus ? "" : "Wrong Credentials!"
 
     QtObject {
         id: internal
@@ -127,6 +127,8 @@ Window {
     Text {
         text: login_window.alertText
         color: login_window.alertColor
+        font.bold: true
+        font.pointSize: 10
         anchors.top: login_button.bottom
         anchors.horizontalCenter: parent.horizontalCenter
     }
