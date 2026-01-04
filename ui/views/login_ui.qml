@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Window
 import QtQuick.Controls
 import QtQuick.Controls.Material
+import QtQuick.Dialogs
 
 Window {
     id: login_window
@@ -19,10 +20,22 @@ Window {
     property color alertColor: ems_connect.loginViewModel.loginStatus ? "black" : "red"
     property string alertText: ems_connect.loginViewModel.loginStatus ? "" : "Wrong Credentials!"
 
+    MessageDialog {
+        id: emptyInput
+        title: "Login Error"
+        text: "Please enter credentials!"
+        buttons: MessageDialog.Ok
+    }
+
     QtObject {
         id: internal
         function submitLogin() {
-            ems_connect.loginViewModel.validateCredentials(username_input.text, password_input.text)
+            if (username_input.text === "" || password_input.text === "") {
+                emptyInput.open()
+            }
+            else{
+                ems_connect.loginViewModel.validateCredentials(username_input.text, password_input.text)
+            }
         }
     }
 
