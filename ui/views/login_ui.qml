@@ -128,6 +128,13 @@ Window {
         font.bold: true
         font.pointSize: 10
         font.letterSpacing: 3
+        hoverEnabled: true
+        focus: false
+        highlighted: false
+        flat: false
+        down: false
+        checkable: false
+        checked: false
         Material.roundedScale: Material.ExtraSmallScale
         Material.background: hovered ? "#354498" : Material.Indigo
         anchors.top: input_container.bottom
