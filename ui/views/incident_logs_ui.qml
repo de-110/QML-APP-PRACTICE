@@ -10,6 +10,7 @@ Item {
     Rectangle {
         id: side_bar
         width: 80
+        clip: true
 
         states: State {
             name: "clicked";
@@ -29,7 +30,23 @@ Item {
         }
 
         transitions: Transition {
-            NumberAnimation { properties: "width"; easing.type: Easing.InOutBack}
+            to: "clicked"
+            reversible: true
+            SequentialAnimation {
+                
+                ParallelAnimation{
+                    PropertyAction {
+                        targets: [add_incident, delete_incident, print_incident]
+                        property: "display"
+                    }
+                    PropertyAction {
+                        targets: [data_entry, view_incidents, settings, logout]
+                        property: "text"
+                    }
+                }
+                
+                NumberAnimation { properties: "width"; duration: 200; easing.type: Easing.InOutBack;}                          
+            }
         }
 
         anchors {
@@ -52,6 +69,7 @@ Item {
 
                 Text {
                     id: title_acronym
+                    clip:true
                     text: "IL"
                     color: "black"
                     font.pointSize: 15
