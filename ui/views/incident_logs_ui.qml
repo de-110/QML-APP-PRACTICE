@@ -11,6 +11,27 @@ Item {
         id: side_bar
         width: 80
 
+        states: State {
+            name: "clicked";
+            PropertyChanges { target: side_bar; width: 250;}
+            
+            PropertyChanges { target: title_acronym; text: "Incident Logs";}
+            PropertyChanges { target: user_role; visible: true;}
+            
+            PropertyChanges { target: data_entry; text: "Enter Incident"; width: 250}
+            PropertyChanges { target: view_incidents; text: "View Incidents"; width: 250}
+            PropertyChanges { target: settings; text: "Settings"; width: 250}
+            PropertyChanges { target: logout; text: "Logout"; width: 250}
+            
+            PropertyChanges { target: add_incident; display: AbstractButton.TextBesideIcon; width: 240}
+            PropertyChanges { target: delete_incident; display: AbstractButton.TextBesideIcon; width: 240}
+            PropertyChanges { target: print_incident; display: AbstractButton.TextBesideIcon; width: 240}
+        }
+
+        transitions: Transition {
+            NumberAnimation { properties: "width"; easing.type: Easing.InOutBack}
+        }
+
         anchors {
             left: parent.left
             top: parent.top
@@ -32,7 +53,7 @@ Item {
                 Text {
                     id: title_acronym
                     text: "IL"
-                    color: "limegreen"
+                    color: "black"
                     font.pointSize: 15
                     font.letterSpacing: 1
                     anchors.horizontalCenter: parent.horizontalCenter
@@ -46,6 +67,8 @@ Item {
                     width: 60
                     height: 60
 
+                    anchors.horizontalCenter: parent.horizontalCenter
+
                     Text {
                         id: user_name
                         text: "John"
@@ -56,6 +79,19 @@ Item {
                         anchors.horizontalCenter: parent.horizontalCenter
                         anchors.top: user_photo.bottom
                         anchors.topMargin: 10
+                    }
+
+                    Text {
+                        visible: false
+                        id: user_role
+                        text: "COMMEL"
+                        font.weight: 400
+                        font.pointSize: 10
+                        opacity: 0.8
+
+                        anchors.horizontalCenter: parent.horizontalCenter
+                        anchors.top: user_name.bottom
+                        anchors.topMargin: 8
                     }
                 }
             }
@@ -76,6 +112,10 @@ Item {
                     icon.height: 32
                     icon.color: hovered ? "limegreen" : "black"
 
+                    text: ""
+                    display: AbstractButton.TextBesideIcon
+                    font.pointSize: 12        
+
                     Material.roundedScale: Material.ExtraSmallScale
 
                     anchors.horizontalCenter: parent.horizontalCenter
@@ -91,6 +131,10 @@ Item {
                     icon.width: 32
                     icon.height: 32
                     icon.color: hovered ? "limegreen" : "black"
+
+                    text: ""
+                    display: AbstractButton.TextBesideIcon
+                    font.pointSize: 12  
 
                     Material.roundedScale: Material.ExtraSmallScale
 
@@ -186,6 +230,10 @@ Item {
                     icon.height: 32
                     icon.color: hovered ? "limegreen" : "black"
 
+                    text: ""
+                    display: AbstractButton.TextBesideIcon
+                    font.pointSize: 12    
+
                     Material.roundedScale: Material.ExtraSmallScale
 
                     anchors.horizontalCenter: parent.horizontalCenter
@@ -201,6 +249,10 @@ Item {
                     icon.width: 32
                     icon.height: 32
                     icon.color: hovered ? "limegreen" : "black"
+
+                    text: ""
+                    display: AbstractButton.TextBesideIcon
+                    font.pointSize: 12    
 
                     Material.roundedScale: Material.ExtraSmallScale
 
@@ -228,7 +280,7 @@ Item {
 
             Button {
                 id: menu
-                 width: 80
+                width: 80
                 height: 60
                 flat: true
 
@@ -239,6 +291,7 @@ Item {
 
                 Material.roundedScale: Material.ExtraSmallScale
 
+                onClicked: {side_bar.state = (side_bar.state === 'clicked' ? "" : 'clicked');}
                 
                 anchors.verticalCenter: parent.verticalCenter
             }
