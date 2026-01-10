@@ -9,7 +9,7 @@ ApplicationWindow{
 
     StackView {
         id: stack
-        initialItem: ("views/incident_logs_ui.qml")
+        initialItem: ("views/incident_logs/incident_logs_ui.qml")
         anchors.fill: parent
     }
 
